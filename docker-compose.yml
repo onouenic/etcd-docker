@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  etcd:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    container_name: etcd-docker
+    ports:
+      - '2379:2379'
+      - '2380:2380'
+    volumes:
+      - etcd-data:/bitnami/etcd
+    environment:
+      ETCD_ROOT_PASSWORD: senha_root
+      ETCD_ADMIN_PASSWORD: senha_admin
+    # Comando executado para aguardar o etcd e executar o script de configuração de usuários
+    command: >
+      bash -c "
+      /opt/bitnami/scripts/etcd/run.sh &
+      until etcdctl endpoint health; do echo 'Aguardando etcd...'; sleep 2; done;
+      echo 'ETCD pronto, executando script...';
+      /opt/bitnami/scripts/initial-config.sh;
+      wait
+      "
+
+    networks:
+      - internal
+
+networks:
+  internal:
+    external: true
+
+volumes:
+  etcd-data:
+    name: etcd-data-prod
