@@ -18,10 +18,10 @@ else
 fi
 
 # Criação do usuário admin com permissões amplas
-echo "Verificando se o usuário sisweb já existe..."
-if ! etcdctl user get sisweb > /dev/null 2>&1; then
+echo "Verificando se o usuário admin já existe..."
+if ! etcdctl user get admin > /dev/null 2>&1; then
     echo "Criando usuário admin..."
-    echo "${ETCD_ADMIN_PASSWORD}" | etcdctl user add sisweb --interactive=false
+    echo "${ETCD_ADMIN_PASSWORD}" | etcdctl user add admin --interactive=false
 
     # Cria role admin
     etcdctl role add role_admin
@@ -31,14 +31,14 @@ if ! etcdctl user get sisweb > /dev/null 2>&1; then
 
     # Importante: para permitir o usuário admin gerenciar usuários e roles,
     # associe também a role root (que tem todos os privilégios administrativos)
-    etcdctl user grant-role sisweb root
+    etcdctl user grant-role admin root
 
     # Também associe a role admin (controle de dados)
-    etcdctl user grant-role sisweb role_admin
+    etcdctl user grant-role admin role_admin
 
     echo "Usuário admin e role_admin criados e configurados."
 else
-    echo "Usuário sisweb já existe. Pulando criação."
+    echo "Usuário admin já existe. Pulando criação."
 fi
 
 echo "Ativando autenticação..."

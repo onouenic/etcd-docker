@@ -1,6 +1,6 @@
 # Etcd Docker - Ambiente com Autenticação e Controle de Acesso
 
-Este repositório fornece um ambiente Docker para subir uma instância do [etcd](https://etcd.io/) já configurada com autenticação, usuário root, um usuário administrativo (`sisweb`) e roles de acesso. O objetivo é facilitar o provisionamento de um etcd seguro, pronto para uso em ambientes de desenvolvimento ou produção.
+Este repositório fornece um ambiente Docker para subir uma instância do [etcd](https://etcd.io/) já configurada com autenticação, usuário root, um usuário administrativo (`admin`) e roles de acesso. O objetivo é facilitar o provisionamento de um etcd seguro, pronto para uso em ambientes de desenvolvimento ou produção.
 
 ## Finalidade
 
