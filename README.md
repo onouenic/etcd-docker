@@ -18,7 +18,7 @@ Este repositório fornece um ambiente Docker para subir uma instância do [etcd]
 1. **Clone o repositório:**
 
    ```sh
-   git clone <URL_DO_REPOSITORIO>
+   git clone git@github.com:onouenic/etcd-docker.git
    cd etcd-docker
    ```
 
