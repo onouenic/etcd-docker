@@ -57,7 +57,7 @@ echo "--- [FIM] Setup inicial ---"
 #
 #   etcdctl --user root:<senha> role add role_user_dumps
 #   etcdctl --user root:<senha> role grant-permission role_user_dumps \
-#       --prefix=true readwrite /dumps/
+#       --prefix=true readwrite /service/nestjs/dumps/
 #
 # 3) Associar usuário à role:
 #
