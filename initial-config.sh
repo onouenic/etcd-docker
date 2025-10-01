@@ -3,6 +3,10 @@ set -e
 
 echo "--- [INÍCIO] Setup inicial do etcd (root + auth) ---"
 
+# Tenta desativar auth se estiver ativo
+echo "Desativando autenticação temporariamente (se necessário)..."
+etcdctl --user=root:${ETCD_ROOT_PASSWORD} auth disable || true
+
 # Valida se a senha root foi fornecida
 if [ -z "${ETCD_ROOT_PASSWORD}" ]; then
     echo "!!! ERRO: A variável ETCD_ROOT_PASSWORD deve ser definida."
