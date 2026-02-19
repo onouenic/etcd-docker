@@ -19,7 +19,7 @@ services:
     command: >
       bash -c "
       /opt/bitnami/scripts/etcd/run.sh &
-      until etcdctl --user=root:fnpk0RVx9170YXxI endpoint health; do echo 'Aguardando etcd...'; sleep 2; done;
+      until etcdctl --user root:$$ETCD_ROOT_PASSWORD endpoint health; do echo 'Aguardando etcd...'; sleep 2; done;
       echo 'ETCD pronto, executando script...';
       /opt/bitnami/scripts/initial-config.sh;
       wait
